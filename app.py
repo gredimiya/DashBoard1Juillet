@@ -33,7 +33,7 @@ def main():
             ## Filtre
             st.subheader("Cette page n'as pas de filtre car j'aime tout de toi")
         with col2:
-            st.image("source\Hamster.jpg")
+            st.image("source/Hamster.jpg")
 
     with st.container():
         ## Evolution de l'amour au fil des jours
