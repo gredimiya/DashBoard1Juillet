@@ -2,14 +2,21 @@
 setlocal
 cd /d "%~dp0"
 
-if not exist ".venv\Scripts\python.exe" (
+set PYTHON_EXE=.venv\Scripts\python.exe
+
+if not exist "%PYTHON_EXE%" (
     py -3 -m venv .venv
 )
 
-call ".venv\Scripts\activate"
-python -m pip install --upgrade pip
-pip install -r requirements.txt
-streamlit run app.py
+if not exist "%PYTHON_EXE%" (
+    echo Impossible de créer l'environnement virtuel.
+    pause
+    exit /b 1
+)
+
+"%PYTHON_EXE%" -m pip install --upgrade pip
+"%PYTHON_EXE%" -m pip install -r requirements.txt
+"%PYTHON_EXE%" -m streamlit run app.py
 
 if errorlevel 1 (
     echo.
